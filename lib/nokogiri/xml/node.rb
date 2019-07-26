@@ -762,7 +762,7 @@ module Nokogiri
           indent_times  = options[:indent] || 2
         end
         indent_text   = options[:indent_text] || ' '
-        indentation   = (indent_text * indent_times).freeze
+        indentation   = indent_string(indent_text, indent_times)
 
         config = SaveOptions.new(save_options.to_i)
         yield config if block_given?
@@ -773,6 +773,13 @@ module Nokogiri
           indentation,
           config.options
         )
+      end
+
+      def indent_string(str, indent)
+        return ''.freeze if indent == 0
+        return '  '.freeze if str == ' '.freeze && indent == 2
+
+        str * indent
       end
 
       ###
