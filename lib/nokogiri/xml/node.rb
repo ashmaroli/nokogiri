@@ -1,4 +1,6 @@
 # encoding: UTF-8
+# frozen_string_literal: true
+
 require 'stringio'
 require 'nokogiri/xml/node/save_options'
 
@@ -888,7 +890,7 @@ Requires a Node, NodeSet or String argument, and cannot accept a #{data.class}.
       end
 
       # @private
-      IMPLIED_XPATH_CONTEXTS = [ './/'.freeze ].freeze # :nodoc:
+      IMPLIED_XPATH_CONTEXTS = [ './/' ].freeze # :nodoc:
 
       def add_child_node_and_reparent_attrs node # :nodoc:
         add_child_node node

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Nokogiri
   module XML
     ####
@@ -364,7 +366,7 @@ module Nokogiri
       alias :+ :|
 
       # @private
-      IMPLIED_XPATH_CONTEXTS = [ './/'.freeze, 'self::'.freeze ].freeze # :nodoc:
+      IMPLIED_XPATH_CONTEXTS = [ './/', 'self::' ].freeze # :nodoc:
 
     end
   end

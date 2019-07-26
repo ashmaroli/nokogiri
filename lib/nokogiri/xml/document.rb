@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Nokogiri
   module XML
     ##
@@ -275,7 +277,7 @@ module Nokogiri
       end
 
       # @private
-      IMPLIED_XPATH_CONTEXTS = [ '//'.freeze ].freeze # :nodoc:
+      IMPLIED_XPATH_CONTEXTS = [ '//' ].freeze # :nodoc:
 
       def inspect_attributes
         [:name, :children]
