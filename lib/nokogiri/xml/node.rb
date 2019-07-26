@@ -762,6 +762,7 @@ module Nokogiri
           indent_times  = options[:indent] || 2
         end
         indent_text   = options[:indent_text] || ' '
+        indentation   = (indent_text * indent_times).freeze
 
         config = SaveOptions.new(save_options.to_i)
         yield config if block_given?
@@ -769,7 +770,7 @@ module Nokogiri
         native_write_to(
           io,
           encoding,
-          indent_text * indent_times,
+          indentation,
           config.options
         )
       end
