@@ -4,6 +4,8 @@
 
 source "https://rubygems.org/"
 
+gemspec
+
 gem "mini_portile2", "~>2.5.0"
 
 gem "concourse", "~>0.34", :group => [:development, :test]
