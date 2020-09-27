@@ -21,4 +21,4 @@ jobs:
         run: |
           bundle install -j8
       - run: rake compile
-      - run: rake profile_memory
+      - run: bundle exec rake profile_memory
