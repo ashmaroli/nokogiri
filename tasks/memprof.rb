@@ -2,8 +2,7 @@
 
 task :profile_memory do
   require "memory_profiler"
-  require File.expand_path("../ext/extconf.rb", __dir__)
-  require File.expand_path("../lib/nokogiri", __dir__)
+  require "nokogiri"
 
   puts "Testing with Nokogiri v" + Nokogiri::VERSION.to_s
   puts

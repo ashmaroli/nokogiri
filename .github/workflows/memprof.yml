@@ -14,12 +14,16 @@ jobs:
         uses: actions/cache@v1
         with:
           path: vendor/bundle
-          key: ubuntu-latest-gems-${{ hashFiles('**/Gemfile.lock') }}
+          key: ubuntu-latest-gems
           restore-keys: |
             ubuntu-latest-gems-
       - name: Install dependencies
         run: |
           bundle config path vendor/bundle
+          bundle install -j8
+      - run: |
+          bundle exec rake gem:spec
+          bundle exec ruby .github/workflows/actions/munge_gemfile.rb
           bundle install -j8
       - run: bundle exec rake compile
       - run: bundle exec rake profile_memory
