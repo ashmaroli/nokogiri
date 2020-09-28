@@ -10,6 +10,6 @@ task :profile_memory do
   CONTENTS = File.read(File.expand_path("../test/files/fixture.html", __dir__))
 
   MemoryProfiler.report do
-    1000.times { Nokogiri::HTML::DocumentFragment.parse(CONTENTS).to_html }
+    1000.times { Nokogiri::HTML::DocumentFragment.parse(CONTENTS).to_html({:encoding => 'UTF-8'}) }
   end.pretty_print(scale_bytes: true, normalize_paths: true)
 end
