@@ -19,6 +19,7 @@ jobs:
             ubuntu-latest-gems-
       - name: Install dependencies
         run: |
+          bundle config path vendor/bundle
           bundle install -j8
       - run: rake compile
       - run: bundle exec rake profile_memory
