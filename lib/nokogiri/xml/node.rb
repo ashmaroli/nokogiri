@@ -1010,7 +1010,7 @@ module Nokogiri
         }
 
         encoding = options[:encoding] || document.encoding
-        options[:encoding] = encoding
+        options[:encoding] = encoding unless options[:encoding]
 
         outstring = String.new
         outstring.force_encoding(Encoding.find(encoding || "utf-8"))
