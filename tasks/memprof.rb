@@ -8,8 +8,14 @@ task :profile_memory do
   puts
 
   CONTENTS = File.read(File.expand_path("../test/files/fixture.html", __dir__))
+  NOKOGIRI_SERIALIZE_OPTIONS = {
+    :encoding  => 'UTF-8',
+    :save_with => Nokogiri::XML::Node::SaveOptions::DEFAULT_HTML
+  }.freeze
 
   MemoryProfiler.report do
-    1000.times { Nokogiri::HTML::DocumentFragment.parse(CONTENTS).to_html({:encoding => 'UTF-8'}) }
+    1000.times do
+      Nokogiri::HTML::DocumentFragment.parse(CONTENTS).to_html(NOKOGIRI_SERIALIZE_OPTIONS)
+    end
   end.pretty_print(scale_bytes: true, normalize_paths: true)
 end
