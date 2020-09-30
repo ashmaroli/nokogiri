@@ -21,9 +21,12 @@ jobs:
         run: |
           bundle config path vendor/bundle
           bundle install -j8
-      - run: |
           bundle exec rake gem:spec
           bundle exec ruby .github/workflows/actions/munge_gemfile.rb
           bundle install -j8
-      - run: bundle exec rake compile
-      - run: bundle exec rake profile_memory
+      - name: Compile Nokogiri
+        run: bundle exec rake compile
+      - name: Memory Profile of parsing and serializing HTML Document
+        run: bundle exec rake memprof:html_doc
+      - name: Memory Profile of parsing and serializing HTML Document Fragment
+        run: bundle exec rake memprof:html_doc_frag
